@@ -1,0 +1,43 @@
+.bg-black {
+    background-color: rgb(65, 62, 62);
+}
+
+.container div h3 {
+    color:snow;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.quizArea {
+    border-radius: 2rem;
+    background-color: thistle;
+    margin: 0 auto;
+    text-align: center;
+    height: 30rem;
+    padding: 0 auto;
+}
+
+.userInfo {
+    border-radius: 2rem;
+    background-color: rgb(221, 217, 221);
+    margin: 0 auto;
+    text-align: center;
+    height: 20rem;
+    width: 30rem;
+    padding: 0 auto;
+}
+
+.inputDisp {
+    width: 10rem;
+    height: 3rem;
+    font-size: 2rem;
+    display: inline-block;
+    
+}
+
+.textSize {
+    font-size: 1.5rem;
+}
