@@ -1,3 +1,6 @@
+.container {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
 .bg-black {
     background-color: rgb(65, 62, 62);
 }
@@ -40,4 +43,29 @@
 
 .textSize {
     font-size: 1.5rem;
+}
+
+.divSize {
+    height: 5rem;
+    padding-top: 5%;
+}
+
+.set-margin {
+    margin-top: 3%;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-set {
+    color: rgb(2, 16, 27);
+}
+
+.team-score {
+    width: 100%;
+    height: 5rem;
+    margin-left: 35%;
+    /* margin: 0; */
+    padding: 0;
 }
