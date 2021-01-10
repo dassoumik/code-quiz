@@ -27,7 +27,7 @@ overText.textContent = "Please enter your team name and click on button to displ
 var count = 2;
 var isWrong = false;
 var quizTimer;
-var currentScore = 30;
+var currentScore = 5;
 var newTeam = true;
 // var teamData = [{name: "", totalScore: 0, rank: 0}];
 var teamData = new Array();
@@ -82,6 +82,7 @@ function displayScore() {
     var teamScoreLabel = document.createElement("div");
     var teamRankLabel = document.createElement("div");
     var labelRow = document.createElement("div");
+    var termRow = document.createElement("div");
     teamNameLabel.setAttribute("class", "col-lg-3 bg-light");
     teamScoreLabel.setAttribute("class", "col-lg-3 bg-light");
     teamRankLabel.setAttribute("class", "col-lg-3 bg-light");
@@ -104,31 +105,39 @@ function displayScore() {
             }
         });
     }
-    
+
     if (teamDataLS.length === 0 || newTeam) {
         teamDataLS.push({
             name: team,
             totalScore: currentScore,
             rank: 0
         });
-    } 
+    }
     teamData = teamDataLS;
     console.log(teamData);
     console.log("2+ " + teamData);
     localStorage.setItem("teamDataLS", JSON.stringify(teamData));
 
     displayRow.after(labelRow);
+    labelRow.after(termRow);
     displayRow.classList.add("hide");
     labelRow.setAttribute("class", "row user-info");
     labelRow.appendChild(teamNameLabel);
     labelRow.appendChild(teamScoreLabel);
     labelRow.appendChild(teamRankLabel);
     console.log(teamData);
-    var byScore = teamData.sort((a, b) => a.totalScore > b.totalScore ? 1 : 1);
-    
-    var i = 0;
+    // var byScore = teamData.sort((a, b) => a.totalScore > b.totalScore ? 1 : 1);
+    var byScore = teamData.sort((a, b) => {
+        return b.totalScore - a.totalScore
+    });
+
+    var i = 1;
     byScore.forEach((item, index) => {
-        i++
+        if (index > 0) {
+            if ((byScore[index].totalScore != byScore[index - 1].totalScore)) {
+                i++;
+            } 
+        }
         var holderRow = document.createElement("row");
         var teamNameHolder = document.createElement("div");
         var teamScoreHolder = document.createElement("div");
@@ -137,17 +146,19 @@ function displayScore() {
         teamScoreHolder.setAttribute("class", "col-lg-3 bg-light");
         teamRankHolder.setAttribute("class", "col-lg-3 bg-light");
         holderRow.setAttribute("class", "row user-info");
-        labelRow.after(holderRow);
+        termRow.before(holderRow);
         holderRow.appendChild(teamNameHolder);
         holderRow.appendChild(teamScoreHolder);
         holderRow.appendChild(teamRankHolder);
-        teamNameHolder.textContent = item.name;
         console.log(teamNameHolder);
         teamScoreHolder.textContent = item.totalScore;
         teamRankHolder.textContent = i;
+        if (i === 1) {
+            teamNameHolder.innerHTML = "<span><i class='icon-star color-red'></i></span>" + "  " + item.name + "  " + "<span><i class='icon-star color-red'></i></span>"
+        } else {
+            teamNameHolder.textContent = item.name;
+        }
     });
-
-
 };
 
 
