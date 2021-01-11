@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Code Quiz<span id="subject"></span></a>
+            <a class="navbar-brand" href="#">Code Quiz</a>
             <div class="col-lg-3"></div>
             <div class="col-lg-3"></div>
             <div class="col-lg-3"></div>
           
-            <div class="col-lg-3 text-right mr-2 pr-2">
+            <div class="col-lg-3 text-right">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <span>Time Left: </span>
@@ -37,6 +38,23 @@
                 <button id="start" type="button" class="btn btn-primary btn-lg">Start Quiz</button>
             </div>
             <div class="col-lg-3 removeOnStart"></div>
+            <section class ="col-lg-2 quizPreSection rounded-tl rounded-bl bg-light qa-layout mt-5 hide">
+                <div class="mt-5 pt-5 hide" id="topic"><strong>Topic: </strong><span id="topic-item"></span></div>
+                <div class="mt-0 pt-0"><span id="right"><i class="icon-thumbs-up-alt color-green"></i><em> Right Answer!</em></span></div>
+                <div class="mt-0 pt-0"><span id="wrong"><i class="icon-remove color-red"></i><em>Wrong Answer!</em></span></div>
+            </section>
+            <section class="col-lg-9 quizSection bg-light qa-layout mt-5 hide">
+                <div class="quizQstn"></div>
+                </br>
+                <div><button id="opt1" class="optBt btn btn-primary btn-lg"></button></div>
+                </br>
+                <div><button id="opt2" class="optBt btn btn-primary btn-lg"></button></div>
+                </br>
+                <div><button id="opt3" class="optBt btn btn-primary btn-lg"></button></div>
+                </br>
+                <div><button id="opt4" class="optBt btn btn-primary btn-lg"></button></div>
+            </section>    
+            <section class ="col-lg-1 quizPostSection rounded-tr rounded-br bg-light qa-layout mt-5 hide"></section>
         </div>
     </div>
     
