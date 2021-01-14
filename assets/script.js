@@ -6,6 +6,15 @@ var dispQuiz = document.querySelector("#displayRow");
 var dispTimer = document.querySelector("#timer");
 var timeLeft = document.querySelector(".time-left");
 var teamName = document.createElement("input");
+var currStatHead = document.querySelector(".footer-head");
+var currStat = document.querySelector(".footer");
+var asideTeam = document.querySelector("#asideTeam");
+var totalScore = document.querySelector("#totalScore");
+var totalQstn = document.querySelector("#totalQstn");
+var correctAns = document.querySelector("#correctAns");
+var HTMLcr = document.querySelector("#HTMLcr");
+var CSScr = document.querySelector("#CSScr");
+var jScriptCR = document.querySelector("#jScriptCR");
 teamName.setAttribute("type", "text");
 teamName.setAttribute("class", "rounded-lg mb-2 pt-2 input-sm");
 teamName.setAttribute("name", "nameBox");
@@ -51,6 +60,7 @@ var newTeam = true;
 var index;
 var mySound;
 var teamData = new Array();
+
 var quizData = [{quiz: "Which HTML element do not need a closing tag?",
 opt1: "nav",
 opt2: "form",
@@ -60,17 +70,73 @@ ans:  "opt3",
 topic: "HTML"     
 },
 
-{quiz: 'What will the following line of code select?   ' + 
-'document.querySelector("#div");',
+{quiz: 'What will the following line of code select? ~document.querySelector("#div");',  
 opt1: "all 'div' elements",
 opt2: "all elements with class div",
 opt3: "first 'div' element",
 opt4: "element with id 'div'", 
 ans:  "opt4",
 topic: "jScript"
-}
-]
+},
 
+{quiz: "Select the correct HTML tag to make a text bold.",  
+opt1: "bb",
+opt2: "b",
+opt3: "bold",
+opt4: "bo", 
+ans:  "opt2",
+topic: "HTML"
+},
+
+{quiz: "Which of the following function of String object produces an HTML hypertext link for requesting another URL?",  
+opt1: "small()",
+opt2: "sup()",
+opt3: "link()",
+opt4: "bo", 
+ans:  "opt3",
+topic: "jScript"
+},
+
+{quiz: "Which of the following is the output of the below JavaScript code? ~var x = [typeof x, typeof y][1]; ~typeof typeof x;",  
+opt1: "string",
+opt2: "number",
+opt3: "object",
+opt4: "undefined", 
+ans:  "opt1",
+topic: "jScript"
+},
+
+{quiz: "Select a function of Array object which returns a new array comprised of the current array /or its value(s)?",  
+opt1: "concat()",
+opt2: " valueOf()",
+opt3: "None",
+opt4: " toString()", 
+ans:  "opt4",
+topic: "jScript"
+},
+
+
+{quiz: "What is the output of the following JavaScript snippet? ~function() { ~var a = 10; ~if(a > 5) { ~ a = 7; ~a = 7;" +
+        "~} ~alert(a); ~} ~",
+opt1: "null",
+opt2: "undefined",
+opt3: "19",
+opt4: "7", 
+ans:  "opt4",
+topic: "jScript"
+},
+
+// {quiz: "In CSS, what is the correct option to select only the paragraphs with class name 'warning'? ~<p class='warning'>Don’t do it.</p> ~<p>Do it.</p> ~<p class='warning'>Nooo, don’t do it.</p>",
+// opt1: "p { }",
+// opt2: "#warning { }",
+// opt3: ".warning { }",
+// opt4: "warning { }", 
+// ans:  "opt3",
+// topic: "CSS"
+// }
+
+
+]
 
 //Functions
 function startQuiz() {
@@ -122,13 +188,13 @@ function displayQstn() {
 function answerOption(event) {
     isWrong = false;
     switch (quizData[index].topic) {
-        case HTML:
+        case "HTML":
             HTMLqstn++;
             break;
-        case CSS:
-            CSSQstn++;
+        case "CSS":
+            CSSqstn++;
             break;
-        case jScript:
+        case "jScript":
             jScriptQstn++;
             break;
     }
@@ -140,13 +206,13 @@ function answerOption(event) {
     } else {
         currentScore += 5;
         switch (quizData[index].topic) {
-            case HTML:
+            case "HTML":
                 HTMLscore++;
                 break;
-            case CSS:
+            case "CSS":
                 CSSscore++;
                 break;
-            case jScript:
+            case "jScript":
                 jScriptScore++;
                 break;
         }
@@ -177,21 +243,23 @@ function dispUserStat() {
 }
 
 function displayScore() {
-    var team = teamName.value;
+    var team = teamName.value.toLowerCase();
     
     divInputDisp.classList.add("hide");
     divScoreBt.classList.add("hide");
     timeLeft.classList.add("hide");
     dispTimer.classList.add("hide");
+    currStatHead.classList.remove("hide");
+    currStat.classList.remove("hide");
     
     var teamNameLabel = document.createElement("div");
     var teamScoreLabel = document.createElement("div");
     var teamRankLabel = document.createElement("div");
     var labelRow = document.createElement("div");
     var termRow = document.createElement("div");
-    teamNameLabel.setAttribute("class", "col-lg-3 bg-light");
-    teamScoreLabel.setAttribute("class", "col-lg-3 bg-light");
-    teamRankLabel.setAttribute("class", "col-lg-3 bg-light");
+    teamNameLabel.setAttribute("class", "col-lg-3 bg-light font-weight-bold");
+    teamScoreLabel.setAttribute("class", "col-lg-3 bg-light font-weight-bold");
+    teamRankLabel.setAttribute("class", "col-lg-3 bg-light font-weight-bold");
     
     teamNameLabel.textContent = "Team Name";
     teamScoreLabel.textContent = "Total Score";
@@ -261,6 +329,13 @@ function displayScore() {
             teamNameHolder.textContent = item.name;
         }
     });
+asideTeam.textContent = team;
+totalScore.textContent = currentScore;
+totalQstn.textContent = HTMLqstn + CSSqstn + jScriptQstn;
+correctAns.textContent = HTMLscore + CSSscore + jScriptScore;
+HTMLcr.textContent = String(Math.floor(HTMLscore/HTMLqstn*100)) + "%";
+CSScr.textContent = String(Math.floor(CSSscore/CSSqstn*100)) + "%";
+jScriptCR.textContent = String(Math.floor(jScriptScore/jScriptQstn*100)) + "%";
 };
 
 

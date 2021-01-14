@@ -61,7 +61,18 @@ opt3: "19",
 opt4: "7", 
 ans:  "opt4",
 topic: "jScript"
+},
+
+{quiz: "In CSS, what is the correct option to select only the paragraphs with class name “warning”? ~<p class=”warning”>Don’t do it.</p> ~<p>Do it.</p> ~<p class=”warning”>Nooo, don’t do it.</p>",
+opt1: "p { }",
+opt2: "#warning { }",
+opt3: ".warning { }",
+opt4: "warning { }", 
+ans:  "opt3",
+topic: "CSS"
 }
+
+
 
 
 
