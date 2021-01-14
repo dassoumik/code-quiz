@@ -5,6 +5,22 @@
     background-color: rgb(65, 62, 62);
 }
 
+.bg-green {
+    background-color: #ccf6c8;
+}
+
+.color-yellow {
+    color: #fafcc2 !important;
+}
+
+.color-orange {
+    color: #f6d6ad;
+}
+
+.color-white {
+    color: white;
+}
+
 .container div h3 {
     color:snow;
 }
@@ -55,7 +71,7 @@
 }
 
 .color-red {
-    color: red;
+    color: red !important;
 }
 
 .color-green {

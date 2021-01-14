@@ -1,15 +1,21 @@
 //Assignment Statements
+var HTMLscore = 0, HTMLqstn = 0, CSSscore = 0, CSSqstn = 0, jScriptScore = 0, jScriptQstn = 0;
 var startBt = document.querySelector("#start");
 var remvCols = document.getElementsByClassName("removeOnStart");
 var dispQuiz = document.querySelector("#displayRow");
 var dispTimer = document.querySelector("#timer");
+var timeLeft = document.querySelector(".time-left");
 var teamName = document.createElement("input");
 teamName.setAttribute("type", "text");
-teamName.setAttribute("class", "inputDisp rounded mt-5 mr-1 pt-2");
+teamName.setAttribute("class", "rounded-lg mb-2 pt-2 input-sm");
+teamName.setAttribute("name", "nameBox");
+teamName.setAttribute("autocomplete", "on");
 var teamLabel = document.createElement("label");
 teamLabel.textContent = "Team Name";
-teamLabel.setAttribute("class", "textSize mr-3");
+teamLabel.setAttribute("for", "nameBox");
+teamLabel.setAttribute("class", "textSize text-center font-weight-bold");
 var scoreBt = document.createElement("button");
+var scoreBtDiv = document.createElement("div");
 scoreBt.textContent = "Display Score";
 scoreBt.setAttribute("class", "btn btn-primary btn-lg set-margin");
 var breakLine1 = document.createElement("br");
@@ -17,39 +23,20 @@ var divInputDisp = document.createElement("div");
 divInputDisp.setAttribute("class", "col-lg-12 divSize");
 var divScoreBt = document.createElement("div");
 divScoreBt.classList.add("col-lg-12");
-var quizOver = document.createElement("h5");
-var overText = document.createElement("div");
+var quizOver = document.createElement("h3");
+var overText = document.createElement("p");
 quizOver.setAttribute("class", "color-red");
-overText.setAttribute("class", "color-set;");
+overText.setAttribute("class", "text-lg-center");
 quizOver.textContent = "Quiz Over";
 overText.textContent = "Please enter your team name and click on button to display team score";
 var opt1Bt = document.querySelector("#opt1");
 var opt2Bt = document.querySelector("#opt2");
 var opt3Bt = document.querySelector("#opt3");
 var opt4Bt = document.querySelector("#opt4");
-// var div1opt1 = document.querySelector(".div");
-// var div2opt2 = document.querySelector(".div");
-// var div3opt3 = document.querySelector(".div");
-// var div4opt4 = document.querySelector(".div");
 var quizQstn = document.querySelector(".quizQstn");
-// opt1Bt.setAttribute("class", "optBt btn btn-primary btn-lg bg-red");
-// opt2Bt.setAttribute("class", "optBt btn btn-primary btn-lg bg-red");
-// opt3Bt.setAttribute("class", "optBt btn btn-primary btn-lg bg-red");
-// opt4Bt.setAttribute("class", "optBt btn btn-primary btn-lg bg-red");
-// opt1Bt.setAttribute("id", "opt1Bt");
-// opt2Bt.setAttribute("id", "opt2Bt");
-// opt3Bt.setAttribute("id", "opt3Bt");
-// opt4Bt.setAttribute("id", "opt4Bt");
-// var breakLine1 = document.createElement("br");
-// var breakLine2 = document.createElement("br");
-// var breakLine3 = document.createElement("br");
-// var breakLine4 = document.createElement("br");
 var quizSection = document.querySelector(".quizSection");
 var quizPreSection = document.querySelector(".quizPreSection");
 var quizPostSection = document.querySelector(".quizPostSection");
-// quizSection.setAttribute("class", "col-lg-9 rounded bg-light qa-layout mt-5");
-// quizPreSection.setAttribute("class", "col-lg-2 rounded bg-light qa-layout mt-5");
-// quizPostSection.setAttribute("class", "col-lg-1 rounded bg-light qa-layout mt-5");
 var optBt;
 var topicArea = document.querySelector("#topic");
 var topicItem = document.querySelector("#topic-item");
@@ -63,7 +50,6 @@ var currentScore = 0;
 var newTeam = true;
 var index;
 var mySound;
-// var teamData = [{name: "", totalScore: 0, rank: 0}];
 var teamData = new Array();
 var quizData = [{quiz: "Which HTML element do not need a closing tag?",
 opt1: "nav",
@@ -74,7 +60,7 @@ ans:  "opt3",
 topic: "HTML"     
 },
 
-{quiz: 'What will the following line of code select?' +
+{quiz: 'What will the following line of code select?   ' + 
 'document.querySelector("#div");',
 opt1: "all 'div' elements",
 opt2: "all elements with class div",
@@ -92,9 +78,8 @@ function startQuiz() {
     remvCols[1].classList.add("hide");
     remvCols[2].classList.add("hide");
     dispQuiz.classList.add("quizArea");
-    // var optBt = document.querySelectorAll(".optBt");
-    // console.log(optBt);
-    // dispQuiz.innerHTML = "<h1>Question Displayed</h1>";
+    timeLeft.classList.remove("hide");
+   
     quizTimer = setInterval(function () {
         count--;
         document.querySelector("#wrong").classList.add("hide");
@@ -111,32 +96,16 @@ function startQuiz() {
             ansClicked =false;
         }
         dispTimer.textContent = count;
-        if (dispTimer.textContent == 0) {
+        if (dispTimer.textContent <= 0) {
             dispUserStat();
         }
     }, 1000);
 }
 
 function displayQstn() {
-    // isWrong = false;
     ansClicked = false;    
     index = Math.floor(Math.random()*quizData.length);
-    // dispQuiz.appendChild(quizPreSection);
-    // dispQuiz.appendChild(quizSection);
-    // dispQuiz.appendChild(quizPostSection);
-    // quizSection.appendChild(quizQstn);
-    // quizQstn.after(breakLine1);
-    // breakLine1.after(div1opt1);
-    // div1opt1.appendChild(opt1Bt);
-    // opt1Bt.after(breakLine2);
-    // div1opt1.after(div2opt2);
-    // div2opt2.appendChild(opt2Bt);
-    // opt2Bt.after(breakLine3);
-    // div2opt2.after(div3opt3);
-    // div3opt3.appendChild(opt3Bt);
-    // opt3Bt.after(breakLine4);
-    // div3opt3.after(div4opt4);
-    // div4opt4.appendChild(opt4Bt);
+
     quizSection.classList.remove("hide");
     quizPreSection.classList.remove("hide");
     quizPostSection.classList.remove("hide");
@@ -147,32 +116,50 @@ function displayQstn() {
     opt4Bt.textContent = quizData[index].opt4;
     topicArea.classList.remove("hide");
     topicItem.textContent = quizData[index].topic;
-    // optBt = document.querySelector(".optBt");
-    // console.log(optBt);
-    
-    
-    // return isWrong;      
+
 }
 
 function answerOption(event) {
     isWrong = false;
-    if (event.path[0].id.trim() != quizData[index].ans) {
+    switch (quizData[index].topic) {
+        case HTML:
+            HTMLqstn++;
+            break;
+        case CSS:
+            CSSQstn++;
+            break;
+        case jScript:
+            jScriptQstn++;
+            break;
+    }
+    if (event.target.matches("button") && event.target.id != quizData[index].ans) {    
         isWrong = true;
         mySound = new Audio("assets/sounds/fail-buzzer.mp3");
         mySound.play();
         wrongInd.classList.remove("hide");
     } else {
         currentScore += 5;
+        switch (quizData[index].topic) {
+            case HTML:
+                HTMLscore++;
+                break;
+            case CSS:
+                CSSscore++;
+                break;
+            case jScript:
+                jScriptScore++;
+                break;
+        }
         mySound = new Audio("assets/sounds/right-answer.mp3");
         mySound.play();
         rightInd.classList.remove("hide");
     }
     ansClicked = true;
-    // return;
 };
 
 function dispUserStat() {
     clearInterval(quizTimer);
+    dispTimer.textContent = 0;
     dispQuiz.classList.remove("quizArea");
     dispQuiz.classList.add("userInfo");
     quizSection.classList.add("hide");
@@ -183,21 +170,19 @@ function dispUserStat() {
     quizOver.after(overText);
     overText.after(divScoreBt);
     divScoreBt.appendChild(teamLabel);
-    teamLabel.after(teamName);
-    divScoreBt.appendChild(scoreBt);
+    teamLabel.after(breakLine1);
+    breakLine1.after(teamName);
+    divScoreBt.after(scoreBtDiv);
+    scoreBtDiv.appendChild(scoreBt);
 }
-
-// function TeamData(tname, tscore, rank) {
-//     this.teamName = tname;
-//     this.totalScore += tscore;
-//     this.rank = rank;
-// }
 
 function displayScore() {
     var team = teamName.value;
+    
     divInputDisp.classList.add("hide");
     divScoreBt.classList.add("hide");
-    // var teamArea = document.createElement("col-lg-12");
+    timeLeft.classList.add("hide");
+    dispTimer.classList.add("hide");
     
     var teamNameLabel = document.createElement("div");
     var teamScoreLabel = document.createElement("div");
@@ -208,12 +193,10 @@ function displayScore() {
     teamScoreLabel.setAttribute("class", "col-lg-3 bg-light");
     teamRankLabel.setAttribute("class", "col-lg-3 bg-light");
     
-    
     teamNameLabel.textContent = "Team Name";
     teamScoreLabel.textContent = "Total Score";
     teamRankLabel.textContent = "Rank";
     
-    // var labelRow = document.createElement("row");
     var teamDataLS = JSON.parse(localStorage.getItem("teamDataLS"));
     if (teamDataLS != null) {
         teamDataLS.forEach((item) => {
@@ -247,7 +230,6 @@ function displayScore() {
     labelRow.appendChild(teamNameLabel);
     labelRow.appendChild(teamScoreLabel);
     labelRow.appendChild(teamRankLabel);
-    // var byScore = teamData.sort((a, b) => a.totalScore > b.totalScore ? 1 : 1);
     var byScore = teamData.sort((a, b) => {
         return b.totalScore - a.totalScore
     });
@@ -280,8 +262,6 @@ function displayScore() {
         }
     });
 };
-
-
 
 
 //Event Listeners

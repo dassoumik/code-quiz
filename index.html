@@ -11,16 +11,14 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Code Quiz</a>
+        <nav class="navbar navbar-light bg-green">
+            <a class="navbar-brand" href="#"><strong>Code Quiz</strong></a>
             <div class="col-lg-3"></div>
             <div class="col-lg-3"></div>
-            <div class="col-lg-3"></div>
-          
-            <div class="col-lg-3 text-right">
+            <div class="col-lg-3 text-center">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <span>Time Left: </span>
+                    <span class="hide time-left"><strong>Time Left: </strong></span>
                     <span id="timer"></span>
                 </li>
               </ul>
@@ -33,9 +31,14 @@
         <div class="row" id="displayRow">
             <div class="col-lg-3 m-2 removeOnStart"></div>
             <div class="col-lg-4 rounded-lg  text-center bg-black m-5 p-5 removeOnStart">
-                <h3><strong>Welcome to Code Quiz!</strong></h3>
+                <h3 class="color-yellow"><strong>Welcome to Code Quiz!</strong></h3>
                 </br>
                 <button id="start" type="button" class="btn btn-primary btn-lg">Start Quiz</button>
+                <br> <br>
+                <p class="color-orange"><strong>Rules: </strong></p>
+                <p class="color-orange">5 points for each correct answer</p>
+                <p class="color-orange">-10 seconds for each wrong</p>
+                <p class="color-orange">Max 60 secs</p>
             </div>
             <div class="col-lg-3 removeOnStart"></div>
             <section class ="col-lg-2 quizPreSection rounded-tl rounded-bl bg-light qa-layout mt-5 hide">
