@@ -6,7 +6,7 @@
 }
 
 .bg-green {
-    background-color: #ccf6c8;
+    background-color: #e0ece4;
 }
 
 .color-yellow {
@@ -32,7 +32,7 @@
 
 .quizArea {
     border-radius: 2rem;
-    background-color: #f9c0c0;
+    background-color: #d8d3cd;
     margin: 0 auto;
     text-align: center;
     height: 30rem;
@@ -75,7 +75,7 @@
 }
 
 .color-green {
-    color: rgb(94, 128, 0);
+    color:  #91d18b;
 }
 
 .color-set {
@@ -118,4 +118,13 @@ aside {
 
 .color-black {
     color: #393e46;
+}
+
+.color-grey {
+    color: #f5f4f4;
+}
+
+button {
+    outline-color: white !important;
+    outline: none !important;
 }
