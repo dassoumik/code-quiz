@@ -1,6 +1,7 @@
 .container {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 .bg-black {
     background-color: rgb(65, 62, 62);
 }
@@ -22,7 +23,7 @@
 }
 
 .container div h3 {
-    color:snow;
+    color: snow;
 }
 
 .hide {
@@ -54,7 +55,7 @@
     height: 3rem;
     font-size: 2rem;
     display: inline-block;
-    
+
 }
 
 .textSize {
@@ -75,7 +76,7 @@
 }
 
 .color-green {
-    color:  #91d18b;
+    color: #91d18b;
 }
 
 .color-set {
@@ -103,6 +104,12 @@
     height: 80%;
 }
 
+.text-style {
+    text-align: top;
+    line-height: 2;
+    font-size: large;
+}
+
 .aside {
     margin-right: 20px;
     padding: 20px;
@@ -116,6 +123,10 @@ aside {
     margin-top: 10px;
 }
 
+.flex-height {
+    height: 100%;
+}
+
 .color-black {
     color: #393e46;
 }
@@ -127,4 +138,28 @@ aside {
 button {
     outline-color: white !important;
     outline: none !important;
+}
+
+@media screen and (max-width: 690px) {
+    .rearrange {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .flex-height {
+        height: 50px;
+        font-size: small;
+        padding: 0;
+    }
+
+    .text-style {
+        text-align: top;
+        padding-top: 0;
+        margin-top: 0;
+        line-height: 1;
+        font-size: small;
+        /* white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
+    }
 }

@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-light bg-green">
             <a class="navbar-brand" href="#"><strong>Code Quiz</strong></a>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-3 text-center">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <span class="hide time-left"><strong>Time Left: </strong></span>
-                    <span id="timer"></span>
-                </li>
-              </ul>
-            </div>
-          </nav>
+            <dicol-sms="col-sm-3">
+                </div>
+                <dicol-sms="col-sm-3">
+                    </div>
+                    <dicol-sms="col-sm-3 text-center">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <span class="hide time-left"><strong>Time Left: </strong></span>
+                                <span id="timer"></span>
+                            </li>
+                        </ul>
+                        </div>
+        </nav>
     </header>
 
     <div class="container m-auto text-center">
         <div class="row" style="height: 5rem;"></div>
         <div class="row" id="displayRow">
-            <div class="col-lg-3 m-2 removeOnStart"></div>
-            <div class="col-lg-4 rounded-lg  text-center bg-black m-5 p-5 removeOnStart">
+            <div class="col-sm-2 m-2 removeOnStart"></div>
+            <div class="col-sm-6 rounded-lg text-center bg-black m-5 p-5 removeOnStart">
                 <h3 class="color-yellow"><strong>Welcome to Code Quiz!</strong></h3>
                 </br>
                 <button id="start" type="button" class="btn btn-primary btn-lg">Start Quiz</button>
@@ -40,13 +43,16 @@
                 <p class="color-orange">-10 seconds for each wrong</p>
                 <p class="color-orange">Max 60 secs</p>
             </div>
-            <div class="col-lg-3 removeOnStart"></div>
-            <section class ="col-lg-2 quizPreSection rounded-tl rounded-bl bg-light qa-layout mt-5 hide">
+            <div class="col-sm-3 removeOnStart"></div>
+            <section
+                class="col-sm-2 col-sm-2 col-sm-2 quizPreSection rounded-tl rounded-bl bg-light qa-layout mt-5 rearrange hide">
                 <div class="mt-5 pt-5 hide" id="topic"><strong>Topic: </strong><span id="topic-item"></span></div>
-                <div class="mt-0 pt-0"><span id="right"><i class="icon-thumbs-up-alt color-green"></i><em> Right Answer!</em></span></div>
-                <div class="mt-0 pt-0"><span id="wrong"><i class="icon-remove color-red"></i><em>Wrong Answer!</em></span></div>
+                <div class="mt-0 pt-0"><span id="right"><i class="icon-thumbs-up-alt color-green"></i><em> Right
+                            Answer!</em></span></div>
+                <div class="mt-0 pt-0"><span id="wrong"><i class="icon-remove color-red"></i><em>Wrong
+                            Answer!</em></span></div>
             </section>
-            <section class="col-lg-9 quizSection bg-light qa-layout mt-5 hide">
+            <section class="col-sm-9 col-sm-9 col-sm-9 quizSection bg-light qa-layout mt-5 hide">
                 <div class="quizQstn"></div>
                 </br>
                 <div><button id="opt1" class="optBt btn btn-primary btn-lg"></button></div>
@@ -56,40 +62,42 @@
                 <div><button id="opt3" class="optBt btn btn-primary btn-lg"></button></div>
                 </br>
                 <div><button id="opt4" class="optBt btn btn-primary btn-lg"></button></div>
-            </section>    
-            <section class ="col-lg-1 quizPostSection rounded-tr rounded-br bg-light qa-layout mt-5 hide"></section>
+            </section>
+            <section class="col-sm-1 quizPostSection rounded-tr rounded-br bg-light qa-layout mt-5 rearrange hide">
+            </section>
         </div>
         <div class="row footer-head hide mt-5 pl-5">
-            
-        </div>    
-        <div class="row footer mt-5 hide" style="border-color: #dbe3e5; background-color: #e0ece4;">    
-        <div class="col-lg-3 color-grey">
-            <div class="text-center bg-light mt-0 mb-0 mr-5 ml-5 pr-5" style="height: 100%;">
-            <p class="color-black font-weight-bold pr-4 pt-4 ml-5" style="text-align: top; line-height: 2; font-size: large;">
-                Last </br> Quiz </br> Stats
-            </p> 
+
+        </div>
+        <div class="row footer mt-5 hide" style="border-color: #dbe3e5; background-color: #e0ece4;">
+            <div class="col-sm-3 color-grey">
+                <div class="text-center bg-light mt-0 mb-0 pr-5 flex-height">
+                    <p class="color-black font-weight-bold pr-4 pt-4 ml-5 text-style">
+                        Last </br> Quiz </br> Stats
+                    </p>
+                </div>
             </div>
-        </div>  
-        <div class="bg-light col-lg-3"> 
-            <aside>
-                <p><strong>Team: </strong><span id="asideTeam" class="color-black"></span></p>
-                <p><strong>Score: </strong><span id="totalScore" class="color-black"></span></p>
-                <p><strong>Attempted: </strong><span id="totalQstn" class="color-black"></span></p>
-                <p><strong>Correct: </strong><span id="correctAns" class="color-black"></span></p>
-            </aside>
-        </div>
-        <div class="bg-light col-lg-3">      
-            <aside>
-                <p><strong>Topic Score</strong></p>
-                <p><strong>HTML: </strong><span id="HTMLcr" class="color-black"></span></p>
-                <p><strong>CSS: </strong><span id="CSScr" class="color-black"></span></p>
-                <p><strong>jScript: </strong><span id="jScriptCR" class="color-black"></span></p>
-            </aside>
-        </div>
-        <div class="col-lg-3 bg-white"></div>
+            <div class="bg-light col-sm-3">
+                <aside>
+                    <p><strong>Team: </strong><span id="asideTeam" class="color-black"></span></p>
+                    <p><strong>Score: </strong><span id="totalScore" class="color-black"></span></p>
+                    <p><strong>Attempted: </strong><span id="totalQstn" class="color-black"></span></p>
+                    <p><strong>Correct: </strong><span id="correctAns" class="color-black"></span></p>
+                </aside>
+            </div>
+            <div class="bg-light col-sm-3">
+                <aside>
+                    <p><strong>Topic Score</strong></p>
+                    <p><strong>HTML: </strong><span id="HTMLcr" class="color-black"></span></p>
+                    <p><strong>CSS: </strong><span id="CSScr" class="color-black"></span></p>
+                    <p><strong>jScript: </strong><span id="jScriptCR" class="color-black"></span></p>
+                </aside>
+            </div>
+            <div class="col-sm-3 bg-white"></div>
         </div>
     </div>
-    
+
     <script src="assets/script.js"></script>
 </body>
+
 </html>
