@@ -1,5 +1,8 @@
 # Code Quiz
 
+## ![](https://img.shields.io/badge/license-MIT-yellowgreen) <br>
+
+
 ## Description
 This is a typical coding assessment having a combination of multiple-choice questions and interactive coding challenges. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code,  it has a clean, polished, and responsive user interface. 
 
@@ -24,4 +27,10 @@ To create a timed quiz on JavaScript fundamentals that stores high scores.
 - HTML
 - CSS
 - Javascript
+
+## License <br>
+This app follow **MIT** licensing rules. Please check below link for more details.
+ <br> <br>
+https://choosealicense.com/licenses/mit/ <br>
+  <br>
 
