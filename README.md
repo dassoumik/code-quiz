@@ -34,3 +34,8 @@ This app follow **MIT** licensing rules. Please check below link for more detail
 https://choosealicense.com/licenses/mit/ <br>
   <br>
 
+## Questions <br>
+  Please connnect with me at: <br> contact.soumikdas@gmail.com <br> <br>
+  Please also follow my github at the below link: <br>
+ ![](https://img.shields.io/github/followers/dassoumik?style=social)     [Soumik Das](https://github.com/dassoumik)  
+
